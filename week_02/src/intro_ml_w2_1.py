@@ -1,13 +1,12 @@
 import numpy as np
 import pandas as pd
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 
 plt.rcParams.update({'font.size': 16})
 
 # Import data train
-data_train = pd.read_csv("data_train.csv")
+data_train = pd.read_csv("../data/raw/data_train.csv")
 data_train.head()
 
 data_test = pd.DataFrame({"x_1": [0.5],
@@ -26,6 +25,7 @@ ax.set_xlabel("x_1")
 ax.set_ylabel("x_2")
 plt.show()
 
+''' ----- 1. Membuat Fungsi KNN ----- '''
 def knn(X_test,
         X_train, 
         y_train,
@@ -61,6 +61,8 @@ def knn(X_test,
     
     return majority_vote, indeks_tetangga
 
+
+''' k = 3 '''
 y_test_predict, indeks_tetangga = knn(X_test = data_test,
                                       X_train = data_train[["x_1", "x_2"]],
                                       y_train = data_train["y"],
@@ -97,6 +99,7 @@ ax.set_ylabel("x_2")
 plt.legend()
 plt.show()
 
+''' k = 5 '''
 y_test_predict, indeks_tetangga = knn(X_test = data_test,
                                       X_train = data_train[["x_1", "x_2"]],
                                       y_train = data_train["y"],
@@ -133,6 +136,7 @@ ax.set_ylabel("x_2")
 plt.legend()
 plt.show()
 
+''' ----- 2. Tambahkan standardisasi data ----- '''
 def knn(X_test,
         X_train, 
         y_train,
@@ -180,7 +184,7 @@ def knn(X_test,
     
     return majority_vote, indeks_tetangga
 
-
+''' k = 3 '''
 y_test_predict, indeks_tetangga = knn(X_test = data_test,
                                       X_train = data_train[["x_1", "x_2"]],
                                       y_train = data_train["y"],
@@ -218,6 +222,7 @@ ax.set_ylabel("x_2")
 plt.legend()
 plt.show()
 
+''' k = 5 '''
 y_test_predict, indeks_tetangga = knn(X_test = data_test,
                                       X_train = data_train[["x_1", "x_2"]],
                                       y_train = data_train["y"],
@@ -255,7 +260,7 @@ ax.set_ylabel("x_2")
 plt.legend()
 plt.show()
 
-
+''' ----- 3. Tambahkan fungsi distance lain ----- '''
 def knn(X_test,
         X_train, 
         y_train,
@@ -311,7 +316,7 @@ def knn(X_test,
     
     return majority_vote, indeks_tetangga
 
-
+''' k = 3 '''
 y_test_predict, indeks_tetangga = knn(X_test = data_test,
                                       X_train = data_train[["x_1", "x_2"]],
                                       y_train = data_train["y"],
@@ -360,6 +365,7 @@ ax.set_ylabel("x_2")
 plt.legend()
 plt.show()
 
+''' k = 5 '''
 y_test_predict, indeks_tetangga = knn(X_test = data_test,
                                       X_train = data_train[["x_1", "x_2"]],
                                       y_train = data_train["y"],
@@ -398,6 +404,7 @@ ax.set_ylabel("x_2")
 plt.legend()
 plt.show()
 
+''' ----- 4. Buat fungsi KNN dengan lebih bagus -----'''
 # Buat fungsi standardisasi
 def standardizer(data_train, data_test):
     """
@@ -440,6 +447,7 @@ def calculate_distance(a, b, distance_func):
 
     return dist
 
+# Buat fungsi KNN
 def knn(X_test,
         X_train, 
         y_train,
@@ -487,6 +495,7 @@ def knn(X_test,
     
     return majority_vote, indeks_tetangga
 
+''' k = 3 '''
 y_test_predict, indeks_tetangga = knn(X_test = data_test,
                                       X_train = data_train[["x_1", "x_2"]],
                                       y_train = data_train["y"],
@@ -535,6 +544,7 @@ ax.set_ylabel("x_2")
 plt.legend()
 plt.show()
 
+''' k = 5 '''
 y_test_predict, indeks_tetangga = knn(X_test = data_test,
                                       X_train = data_train[["x_1", "x_2"]],
                                       y_train = data_train["y"],
